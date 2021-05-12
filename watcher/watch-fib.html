@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" v-model="num">
+        <p v-show="result">{{result}}</p>
+    </div>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: "#app",
+            data: {
+                num: 0,
+                result: ''
+            },
+            methods: {
+
+            },
+            watch: {
+                num(val) {
+                    this.result = "请稍等........";
+                    if (val > 0) {
+                        let worker = new Worker('./fibonaci.js');
+                        // 注意this指向
+                        worker.onmessage = (event) => this.result = event.data;
+                        worker.postMessage(val);
+                    } else {
+                        this.result = '';
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

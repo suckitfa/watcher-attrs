@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        千米：<input type="text" v-model="kilometers"> 米： <input type="text" v-model="meters">
+    </div>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: "#app",
+            data: {
+                kilometers: 0,
+                meters: 0
+            },
+            // 定义监听器 监听属性：meters, kilometers
+            // 其中一个值发生变化，另外一个就会调用
+            watch: {
+                kilometers(val) {
+                    this.meters = val * 1000;
+                },
+                meters(val) {
+                    this.kilometers = val / 1000;
+                }
+            }
+
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,14 @@
+{
+    "name": "watcher-atters",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "http-server -p 80"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "vue": "^2.6.12"
+    }
+}

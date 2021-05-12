@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <p><input type="text" v-model="person.age"></p>
+        <p>{{info}}</p>
+    </div>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: "#app",
+            data: {
+                person: {
+                    age: 0,
+                    name: "Bob"
+                }
+            },
+            watch: {
+                person: {
+                    handler(val, oldVal) {
+                        if (val.age >= 10) {
+                            this.info = "已成年";
+                        } else {
+                            this.info = "未成年";
+                        }
+                    },
+                    deep: true
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
